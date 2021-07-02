@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-md-6">
+        <h3 *ngIf="editMode== false">Add Post</h3>
+        <h3 *ngIf="editMode== true">Edit Post</h3>
+
+        <!-- ngSubmit is event binding round brackets -->
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+
+            <div class="form-group">
+                <label>Title</label>
+                <input class="form-control" type="text" formControlName="title">
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control" type="text" formControlName="desc"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Image Path</label>
+                <input class="form-control" type="text" formControlName="imgPath">
+                <img class="img-responsive" src="{{ form.value.imgPath }}" />
+            </div>
+
+            <button class="btn btn-success" type="submit" [disabled]="form.invalid">Submit</button> |
+            <button class="btn btn-primary" type="reset">Clear</button>
+        </form>
+    </div>
+</div>
